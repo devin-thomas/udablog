@@ -1,0 +1,114 @@
+{
+  "dataset_rows": 1953,
+  "dataset_countries": 217,
+  "dataset_years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "model_name": "Gradient boosting",
+  "metrics": {
+    "holdout_r2": 0.7133202823922282,
+    "holdout_mae": 5848.994811797913,
+    "holdout_rmse": 10986.255758149686,
+    "holdout_mape": 44.53094092343197
+  },
+  "top_features": [
+    {
+      "feature": "life_expectancy_years",
+      "importance": 9402.77563331479
+    },
+    {
+      "feature": "electricity_access_pct",
+      "importance": 3430.467369135194
+    },
+    {
+      "feature": "internet_users_pct",
+      "importance": 2633.443210289672
+    },
+    {
+      "feature": "unemployment_pct",
+      "importance": 1595.0370222501735
+    },
+    {
+      "feature": "urban_population_pct",
+      "importance": 1414.067703017148
+    }
+  ],
+  "profile_gap_table": [
+    {
+      "indicator": "Internet users (%)",
+      "Bottom quartile": 32.39400101,
+      "Middle 50%": 81.757400515,
+      "Top quartile": 95.44564516
+    },
+    {
+      "indicator": "Electricity access (%)",
+      "Bottom quartile": 61.2,
+      "Middle 50%": 100.0,
+      "Top quartile": 100.0
+    },
+    {
+      "indicator": "Life expectancy (years)",
+      "Bottom quartile": 65.86,
+      "Middle 50%": 74.429,
+      "Top quartile": 82.368
+    },
+    {
+      "indicator": "Trade (% of GDP)",
+      "Bottom quartile": 57.5332621823016,
+      "Middle 50%": 91.9748708066969,
+      "Top quartile": 101.657550951677
+    },
+    {
+      "indicator": "Education spend (% of GDP)",
+      "Bottom quartile": 3.244137721015695,
+      "Middle 50%": 3.858394980430605,
+      "Top quartile": 3.12187290174626
+    }
+  ],
+  "scenario_summary": {
+    "baseline_country": "Benin",
+    "baseline_actual_gdp_usd": 1394.17784721831,
+    "baseline_prediction_usd": 1481.8199056158712,
+    "uplift_prediction_usd": 10902.261336174268,
+    "uplift_delta_usd": 9420.441430558396,
+    "uplift_delta_pct": 635.734571715251
+  },
+  "region_summary": [
+    {
+      "region": "North America",
+      "gdp_per_capita_usd": 81032.0
+    },
+    {
+      "region": "Europe & Central Asia",
+      "gdp_per_capita_usd": 27710.0
+    },
+    {
+      "region": "Latin America & Caribbean",
+      "gdp_per_capita_usd": 12485.0
+    },
+    {
+      "region": "East Asia & Pacific",
+      "gdp_per_capita_usd": 6345.0
+    },
+    {
+      "region": "Middle East, North Africa, Afghanistan & Pakistan",
+      "gdp_per_capita_usd": 5370.0
+    },
+    {
+      "region": "South Asia",
+      "gdp_per_capita_usd": 3175.0
+    },
+    {
+      "region": "Sub-Saharan Africa",
+      "gdp_per_capita_usd": 1362.0
+    }
+  ]
+}
