@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Really Predicts GDP per Capita?</title>
+  <style>
+    :root {
+      --bg: #f3efe5;
+      --ink: #14213d;
+      --muted: #43536b;
+      --accent: #0f766e;
+      --panel: #fffdf8;
+      --border: #d7d0c2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 32%),
+        radial-gradient(circle at top right, rgba(20, 33, 61, 0.10), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.02;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 62ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero img,
+    .panel img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 24px 0 40px;
+    }
+
+    .stat,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.7rem;
+      color: var(--accent);
+    }
+
+    .stat span {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.55rem;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0 0;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div>
+        <p>Udacity Data Scientist Nanodegree · udablog project</p>
+        <h1>What Really Predicts GDP per Capita?</h1>
+        <p>
+          A World Bank analysis across 217 countries shows that prosperity clusters around
+          basic capability systems: health, electricity, internet access, and trade connectivity.
+        </p>
+      </div>
+      <img src="assets/cover.png" alt="Scatter plot of internet access against GDP per capita">
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <strong>217</strong>
+        <span>countries in the dataset</span>
+      </div>
+      <div class="stat">
+        <strong>2015-2023</strong>
+        <span>years of World Bank indicators</span>
+      </div>
+      <div class="stat">
+        <strong>0.71</strong>
+        <span>holdout R² on unseen countries</span>
+      </div>
+      <div class="stat">
+        <strong>$10.9K</strong>
+        <span>uplift-scenario GDP per capita prediction</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>Main takeaway</h2>
+        <p>
+          The most predictive indicators were life expectancy, electricity access,
+          internet usage, unemployment, and urbanization. Richer countries do not
+          just have higher output; they have stronger access systems.
+        </p>
+        <img src="assets/feature_importance.png" alt="Feature importance bar chart">
+      </article>
+
+      <article class="panel">
+        <h2>Model quality</h2>
+        <p>
+          I evaluated models with grouped splits, so a country never appears in both
+          training and testing. The best gradient boosting model generalized well enough
+          to make the scenario work credible as a directional estimate.
+        </p>
+        <img src="assets/prediction_scatter.png" alt="Actual versus predicted GDP per capita scatter plot">
+      </article>
+
+      <article class="panel">
+        <h2>Regional gap</h2>
+        <p>
+          Median GDP per capita still varies sharply across regions. The latest-year
+          summary reinforces why access and infrastructure matter: regions with stronger
+          fundamentals cluster at much higher income levels.
+        </p>
+        <img src="assets/region_summary.png" alt="Regional GDP summary bar chart">
+      </article>
+
+      <article class="panel">
+        <h2>Creative scenario</h2>
+        <p>
+          Starting from a real Sub-Saharan African baseline close to Benin's 2023 profile,
+          the model projects a large increase in GDP per capita when internet access,
+          electricity access, life expectancy, trade openness, and education spending are lifted.
+        </p>
+        <img src="assets/scenario_summary.png" alt="Scenario comparison bar chart">
+      </article>
+    </section>
+
+    <section class="panel" style="margin-top: 18px;">
+      <h2>Project files</h2>
+      <ul>
+        <li><a href="https://github.com/devin-thomas/udablog/blob/main/notebooks/world_bank_gdp_analysis.ipynb">Executed notebook</a></li>
+        <li><a href="https://github.com/devin-thomas/udablog/blob/main/data/processed/world_bank_gdp_panel.csv">Committed dataset snapshot</a></li>
+        <li><a href="https://github.com/devin-thomas/udablog/blob/main/blog/substack_article.md">Substack article draft</a></li>
+        <li><a href="https://github.com/devin-thomas/udablog/blob/main/README.md">Repository README</a></li>
+      </ul>
+    </section>
+
+    <p class="footer">
+      Built from World Bank Open Data for the Udacity Data Scientist Nanodegree. Source code:
+      <a href="https://github.com/devin-thomas/udablog">devin-thomas/udablog</a>
+    </p>
+  </main>
+</body>
+</html>
